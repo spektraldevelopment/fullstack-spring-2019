@@ -1,2 +1,1 @@
-# fullstack-spring-2019
-Repo for full stack masterclass @ Hackeryou
+# fullstack-spring-2019 - Project
