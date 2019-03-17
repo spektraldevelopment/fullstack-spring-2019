@@ -6,7 +6,7 @@ class Add extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>Main Content</Col>
+                    <Col>Add Content</Col>
                 </Row>
             </Container>
         );
