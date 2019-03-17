@@ -1,31 +1,42 @@
 'use strict';
 
-//This allows extensibility to create a more robust express server
 const express = require('express');
 const http = require('http');
 
+// 1. Create main express intance
 const router = express();
 
-const PORT = 8000;
+// 2. Require utility function for adding middleware
+const { applyMiddleware } = require('./utils');
 
-const { router: itemsRouter } = require('./routes/items');
+// 3a. Require general middleware
+const middleWare = require('./middleware');
+// 3b. Require error handling middleware
+const errorHandlers = require('./middleware/errorHandlers');
 
-const { handleBodyRequestParsing } = require('./middleware/common');
+// 4. Require routes
+const { router: bookRoutes } = require('./routes/books/bookRoutes');
 
-const applyMiddleware = (middlewareWrapper = [], router) => {
-    for (const wrapper of middlewareWrapper) {
-        wrapper(router);
-    }
-}
+// 5. Require conatants
+const { PORT } = require('./utils/constants');
 
-applyMiddleware([handleBodyRequestParsing], router);
+// 6. Apply general middleware
+applyMiddleware(middleWare, router);
 
-router.use('/items', itemsRouter);
+// 7. Utilise routes
+router.use('/books', bookRoutes);
 
+// 8. Apply error handling middleware (meaningfully last)
+applyMiddleware(errorHandlers, router);
+
+// 9. Create a server from express instance
 const server = http.createServer(router);
 
+// 10. Start server
 server.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
+  console.log(`Server is running on PORT:${PORT}`);
+  if (process.send) {
+    // NOTE: process is being run by pm2
+    process.send('ready');
+  }
 });
-
-
