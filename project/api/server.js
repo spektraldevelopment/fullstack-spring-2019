@@ -15,7 +15,7 @@ const middleWare = require('./middleware');
 const errorHandlers = require('./middleware/errorHandlers');
 
 // 4. Require routes
-const { router: itemRoutes } = require('./routes/items/itemRoutes');
+const { router: itemRoutes } = require('./routes/items/itemsRoutes');
 
 // 5. Require conatants
 const { PORT } = require('./utils/constants');

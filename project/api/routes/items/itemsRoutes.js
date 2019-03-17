@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 
+const itemsService = require('./itemsService');
+
 router.route('/')
     .get((req, res) => {
         res.json({
