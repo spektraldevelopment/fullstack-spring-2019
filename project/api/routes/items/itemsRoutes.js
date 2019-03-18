@@ -6,20 +6,15 @@ const router = express.Router();
 const itemsService = require('./itemsService');
 
 router.route('/')
-    .get((req, res) => {
-        res.json({
-            items : [
-                {
-                    name: 'MacBookPro',
-                    manufacturer: 'Apple',
-                    serial: '#f837g4f8734gb8f3478f',
-                    imageUrl: 'http://via.placeholder.com/1600x500',
-                    receiptImageUrl: 'http://via.placeholder.com/500x100',
-                    serialImageUrl: 'http://via.placeholder.com/360x640',
-                    thumbnailUrl: 'http://via.placeholder.com/100x100'
-                }
-            ]
-        });
+    .get(async (req, res, next) => {
+        try {
+            res.status(200).send({
+                items : await itemsService.listItems()
+            });
+        } catch (err) {
+            console.error(err);
+            next(err);
+        }
     })
 
 module.exports.router = router;
