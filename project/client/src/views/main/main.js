@@ -6,7 +6,9 @@ import {
     ListGroup,
     Button } from 'react-bootstrap';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import SearchBar from "../../components/search-bar/search-bar";
 
 
 class Main extends Component {
@@ -38,7 +40,9 @@ class Main extends Component {
         return(
             <Container>
                 <Row>
-                    <Col>Search Bar</Col>
+                    <Col className="mt-3">
+                        <SearchBar />
+                    </Col>
                 </Row>
                 <Row>
                     <Col>
@@ -47,7 +51,7 @@ class Main extends Component {
                                 this.state.items.map((item, i) => {
                                     return (
                                         <ListGroup.Item as="li" key={i}>
-                                            {item.name}
+                                            <h4>{item.name}</h4>
                                             <div className="float-right mx-2">
                                                 <Button variant="danger">
                                                     <FontAwesomeIcon icon="trash-alt" />
