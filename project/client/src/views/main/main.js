@@ -3,8 +3,11 @@ import {
     Container, 
     Row, 
     Col, 
-    ListGroup } from 'react-bootstrap';
+    ListGroup,
+    Button } from 'react-bootstrap';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class Main extends Component {
 
@@ -43,7 +46,21 @@ class Main extends Component {
                             {
                                 this.state.items.map((item, i) => {
                                     return (
-                                        <ListGroup.Item as="li" key={i}>{item.name}</ListGroup.Item>
+                                        <ListGroup.Item as="li" key={i}>
+                                            {item.name}
+                                            <div className="float-right mx-2">
+                                                <Button variant="danger">
+                                                    <FontAwesomeIcon icon="trash-alt" />
+                                                </Button>
+                                            </div>
+
+                                            <div className="float-right mx-2">
+                                                <Button variant="dark">
+                                                    <FontAwesomeIcon icon="edit" />
+                                                </Button>
+                                            </div>    
+                                            
+                                        </ListGroup.Item>
                                     );
                                 })
                             }
