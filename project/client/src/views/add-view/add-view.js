@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-class Add extends Component {
+class AddView extends Component {
     render() {
         return (
             <Container>
@@ -13,4 +13,4 @@ class Add extends Component {
     }
 }
 
-export default Add;
+export default AddView;

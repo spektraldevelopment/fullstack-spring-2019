@@ -5,9 +5,9 @@ import { faEdit, faTrashAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
 //import logo from './logo.svg';
 
 import Header from './components/header/header';
-import Main from './views/main/main';
-import Add from './views/add/add';
-import Edit from './views/edit/edit';
+import MainView from './views/main-view/main-view';
+import AddView from './views/add-view/add-view';
+import EditView from './views/edit-view/edit-view';
 
 //Import font awesome icons
 library.add(faEdit);
@@ -19,9 +19,9 @@ class App extends Component {
     return (
       <>
         <Header />
-          <Route exact path="/" component={Main}/>
-          <Route exact path="/add" component={Add}/>
-          <Route exact path="/edit" component={Edit}/>
+          <Route exact path="/" component={MainView}/>
+          <Route exact path="/add" component={AddView}/>
+          <Route exact path="/edit" component={EditView}/>
       </>
     );
   }

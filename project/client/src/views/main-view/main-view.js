@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchBar from "../../components/search-bar/search-bar";
 
 
-class Main extends Component {
+class MainView extends Component {
 
     constructor(props) {
         super(props);
@@ -103,4 +103,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default MainView;
