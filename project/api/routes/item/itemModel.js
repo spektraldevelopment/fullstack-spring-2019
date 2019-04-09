@@ -16,6 +16,9 @@ const itemSchema = exports.schema = new Schema({
     serial: {
         type: String
     },
+    cost: {
+        type: String
+    },
     imageUrl: {
         type: String
     },

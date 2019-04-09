@@ -49,7 +49,6 @@ class MainView extends Component {
 
         axios.get('/items/get')
             .then(res => {
-                console.log("");
                 const currentState = this.state;    
                 const nextState = {
                     items: res.data.items
@@ -79,6 +78,7 @@ class MainView extends Component {
                                         <ListGroup.Item as="li" key={item.id} >
                                             <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/>
                                             <h4>{item.name}</h4>
+                                            
                                             <div className="float-right mx-2">
                                                 <Button variant="danger" data-item-id={item.id} onClick={this.onDeleteClick}>
                                                     <FontAwesomeIcon icon="trash-alt" />
