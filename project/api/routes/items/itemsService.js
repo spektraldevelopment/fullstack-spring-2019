@@ -1,11 +1,10 @@
 'use strict';
 
-//const items = require('./itemsModel');
+const Items = require('./itemsModel').model;
 
-let { items } = require('../../utils/mock-db');
+exports.listItems = async () => {
 
-exports.listItems = () => {
-    console.log("#### List Items: ");
-    console.log(items);
+    const items = await Items.find({});
+
     return items;
 };

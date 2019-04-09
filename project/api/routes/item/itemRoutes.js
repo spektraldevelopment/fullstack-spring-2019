@@ -5,14 +5,14 @@ const router = express.Router();
 
 const itemService = require('./itemService');
 
-router.route('/delete/:id')
-    .delete(async (req, res, next) => {
+router.route('/create')
+    .post(async (req, res, next) => {
         try {
 
             const { id } = req.params;
 
-            res.status(200).send({
-                items: await itemService.deleteItem(id)
+            res.status(201).send({
+                item: await itemService.createItem()
             });
         } catch (err) {
             console.error(err);

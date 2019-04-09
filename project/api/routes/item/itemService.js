@@ -1,17 +1,20 @@
 'use strict';
 
-//const item = require('./itemModel');
+const Item = require('./itemModel').model;
 
-let { items } = require('../../utils/mock-db');
+exports.createItem = () => {
 
-exports.deleteItem = (id) => {
-    const newItemList = items.filter((item) => item.id !== id);
-
-    //set items as new item list
-    items = newItemList;
-
-    console.log("#### Delete item: ");
-    console.log(items);
-
-    return items;
+    const newItem = new Item({
+        name: 'MacBookPro',
+        manufacturer: 'Apple',
+        serial: '#f837g4f8734gb8f3478f',
+        imageUrl: 'http://via.placeholder.com/1600x500',
+        receiptImageUrl: 'http://via.placeholder.com/500x100',
+        serialImageUrl: 'http://via.placeholder.com/360x640',
+        thumbnailUrl: 'http://via.placeholder.com/100x100'
+    });
+    
+    //Save model to DB
+    newItem.save()
 };
+

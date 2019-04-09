@@ -10,24 +10,18 @@ const itemSchema = exports.schema = new Schema({
     name: {
         type: String
     },
+    image: {
+        type: String
+    },
     manufacturer: {
         type: String
     },
     serial: {
         type: String
     },
-    imageUrl: {
+    receipt: {
         type: String
-    },
-    receiptImageUrl: {
-        type: String
-    },
-    serialImageUrl: {
-        type: String
-    },
-    thumbnailUrl: {
-        type: String
-    },
+    }
 });
 
 exports.model = mongoose.model('Item', itemSchema);
