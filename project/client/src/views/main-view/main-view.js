@@ -26,15 +26,11 @@ class MainView extends Component {
 
     onDeleteClick = (evt) => {
 
-        const id = evt.target.dataset.itemId;
+        const id = evt.currentTarget.dataset.itemId;
 
         axios.delete(`/item/delete/${id}`)
             .then(res => {
-                const currentState = this.state;    
-                const nextState = {
-                    items: res.data.items
-                };
-                this.setState(Object.assign({}, currentState, nextState));
+                this.getInventory();
             })
             .catch(function (error) {
                 // handle error
@@ -45,8 +41,7 @@ class MainView extends Component {
         console.log("Delete item clicked: ", id);
     }
 
-    componentDidMount() {
-
+    getInventory() {
         axios.get('/items/get')
             .then(res => {
                 const currentState = this.state;    
@@ -59,6 +54,11 @@ class MainView extends Component {
                 // handle error
                 console.error(error);
             })
+    }
+
+    componentDidMount() {
+
+        this.getInventory();
     }
 
     render() {
@@ -74,19 +74,20 @@ class MainView extends Component {
                         <ListGroup as="ul">
                             {
                                 this.state.items.map((item, i) => {
+                                    console.log("ITEM ID: ", item._id);
                                     return (
-                                        <ListGroup.Item as="li" key={item.id} >
+                                        <ListGroup.Item as="li" key={item._id} >
                                             <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/>
                                             <h4>{item.name}</h4>
                                             
                                             <div className="float-right mx-2">
-                                                <Button variant="danger" data-item-id={item.id} onClick={this.onDeleteClick}>
+                                                <Button variant="danger" data-item-id={item._id} onClick={this.onDeleteClick}>
                                                     <FontAwesomeIcon icon="trash-alt" />
                                                 </Button>
                                             </div>
 
                                             <div className="float-right mx-2" >
-                                                <Button variant="dark" data-item-id={item.id} onClick={this.onEditClick}>
+                                                <Button variant="dark" data-item-id={item._id} onClick={this.onEditClick}>
                                                     <FontAwesomeIcon icon="edit" />
                                                 </Button>
                                             </div>    
