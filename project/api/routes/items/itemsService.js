@@ -8,3 +8,11 @@ exports.listItems = async () => {
 
     return items;
 };
+
+exports.findItems = async (term) => {
+
+    console.log('Search Term: ', term);
+
+    const items = await Items.find({ name: { $regex: term.toString() }});
+    return items;
+};

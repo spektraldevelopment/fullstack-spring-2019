@@ -16,6 +16,7 @@ class MainView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            search: "",
             items: []
         };
     }
@@ -74,7 +75,6 @@ class MainView extends Component {
                         <ListGroup as="ul">
                             {
                                 this.state.items.map((item, i) => {
-                                    console.log("ITEM ID: ", item._id);
                                     return (
                                         <ListGroup.Item as="li" key={item._id} >
                                             <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/>

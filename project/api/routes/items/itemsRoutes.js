@@ -17,4 +17,19 @@ router.route('/get')
         }
     })
 
+router.route('/find/:term')
+    .get(async (req, res, next) => {
+        try {
+
+            const { term } = req.params;
+
+            res.status(200).send({
+                items : await itemsService.findItems(term)
+            });
+        } catch (err) {
+            console.error(err);
+            next(err);
+        }
+    })
+
 module.exports.router = router;
