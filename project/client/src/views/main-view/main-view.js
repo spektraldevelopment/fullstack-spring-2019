@@ -7,6 +7,7 @@ import {
     Button } from 'react-bootstrap';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import _ from 'lodash';
 
 import SearchBar from "../../components/search-bar/search-bar";
 
@@ -19,6 +20,8 @@ class MainView extends Component {
             search: "",
             items: []
         };
+
+        this.searchValue = _.debounce(this.searchValue, 300);
     }
 
     onEditClick = (evt) => {
@@ -62,12 +65,32 @@ class MainView extends Component {
         this.getInventory();
     }
 
+    onSearch = (evt) => {
+        this.setState({
+            "search" : evt.target.value
+        });
+
+        this.searchValue(evt.target.value);
+    }
+
+    searchValue = (term) => {
+        axios.get(`/items/find/${term}`)
+            .then(res => {
+                const currentState = this.state;    
+                const nextState = {
+                    items: res.data.items
+                };
+                this.setState(Object.assign({}, currentState, nextState));
+            })
+    }
+
+
     render() {
         return(
             <Container>
                 <Row>
                     <Col className="mt-3">
-                        <SearchBar />
+                        <SearchBar search={this.state.search} onSearch={this.onSearch}/>
                     </Col>
                 </Row>
                 <Row>

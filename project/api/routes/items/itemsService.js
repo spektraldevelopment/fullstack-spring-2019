@@ -13,6 +13,14 @@ exports.findItems = async (term) => {
 
     console.log('Search Term: ', term);
 
-    const items = await Items.find({ name: { $regex: term.toString() }});
+    let items;
+
+    if(term !== '') {
+        items = await Items.find({ name: { $regex: term.toString() }});
+    } else {
+        items = await Items.find({});
+    }
+
+    //const items = await Items.find({ name: { $regex: term.toString() }});
     return items;
 };

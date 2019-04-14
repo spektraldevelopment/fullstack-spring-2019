@@ -8,6 +8,7 @@ import {
 } from 'react-bootstrap';
 
 class SearchBar extends Component {
+
     render() {
         return (
             <>
@@ -16,11 +17,13 @@ class SearchBar extends Component {
                     placeholder="Search"
                     aria-label="Search bar"
                     aria-describedby="search-bar"
+                    value={this.props.search} 
+                    onChange={this.props.onSearch}
                     />
                     <InputGroup.Append>
-                    <InputGroup.Text id="search-bar">
-                        <FontAwesomeIcon icon="search" />
-                    </InputGroup.Text>
+                        <InputGroup.Text id="search-bar">
+                            <FontAwesomeIcon icon="search" />
+                        </InputGroup.Text>
                     </InputGroup.Append>
                 </InputGroup>
 
