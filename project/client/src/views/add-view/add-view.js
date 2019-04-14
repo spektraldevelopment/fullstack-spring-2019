@@ -9,7 +9,7 @@ class AddView extends Component {
         super(props);
         this.state = {
             productName: "",
-            manfacturer: "",
+            manufacturer: "",
             serial: "",
             cost: "",
             redirectToMain: false
@@ -25,7 +25,7 @@ class AddView extends Component {
                 break;
             case 'manufacturer-input':
                 this.setState({
-                    manfacturer: evt.target.value
+                    manufacturer: evt.target.value
                 });
                 break;
             case 'serial-input' :
@@ -49,13 +49,14 @@ class AddView extends Component {
         evt.preventDefault();
         console.log("Add Item!!!");
         console.log("Product name: ", this.state.productName);
-        console.log("Manufacturer: ", this.state.manfacturer);
+        console.log("Manufacturer: ", this.state.manufacturer);
         console.log("Serial: ", this.state.serial);
         console.log("Cost: ", this.state.cost);
 
         axios.post('/item/create', {
             "name": this.state.productName,
-            "manufacturer": this.state.manfacturer,
+            "nameLower": this.state.productName.toLowerCase(),
+            "manufacturer": this.state.manufacturer,
             "serial": this.state.serial,
             "cost" : this.state.cost,
             "imageUrl": "http://via.placeholder.com/1600x500",
@@ -98,7 +99,7 @@ class AddView extends Component {
                                     <Form.Label>Manufacturer</Form.Label>
                                     <Form.Control 
                                         placeholder="" 
-                                        value={this.state.manfacturer}
+                                        value={this.state.manufacturer}
                                         onChange={this.onFieldChange}/>   
                                 </Form.Group>
     

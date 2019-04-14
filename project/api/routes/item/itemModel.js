@@ -10,6 +10,9 @@ const itemSchema = exports.schema = new Schema({
     name: {
         type: String
     },
+    nameLower: {
+        type: String
+    },
     manufacturer: {
         type: String
     },

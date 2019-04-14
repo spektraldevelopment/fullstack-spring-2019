@@ -11,12 +11,13 @@ exports.listItems = async () => {
 
 exports.findItems = async (term) => {
 
-    console.log('Search Term: ', term);
-
     let items;
 
     if(term !== '') {
-        items = await Items.find({ name: { $regex: term.toString() }});
+
+        console.log("Term is: ", term);
+
+        items = await Items.find({ nameLower: { $regex: term.toString() }});
     } else {
         items = await Items.find({});
     }
