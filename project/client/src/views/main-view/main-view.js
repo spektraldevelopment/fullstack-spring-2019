@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { 
     Container, 
     Row, 
@@ -10,6 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
 
 import SearchBar from "../../components/search-bar/search-bar";
+
+import './main-view.scss';
 
 
 class MainView extends Component {
@@ -84,10 +87,14 @@ class MainView extends Component {
             })
     }
 
-
     render() {
         return(
-            <Container>
+            <Container className="main-view">
+                <Row>
+                    <Col className="mt-3">
+                        <Link to={`/add`}>Add<FontAwesomeIcon icon="plus" /></Link>
+                    </Col>
+                </Row>
                 <Row>
                     <Col className="mt-3">
                         <SearchBar search={this.state.search} onSearch={this.onSearch}/>
@@ -102,6 +109,7 @@ class MainView extends Component {
                                         <ListGroup.Item as="li" key={item._id} >
                                             <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/>
                                             <h4>{item.name}</h4>
+                                            <h5>{item.manufacturer}</h5>
                                             
                                             <div className="float-right mx-2">
                                                 <Button variant="danger" data-item-id={item._id} onClick={this.onDeleteClick}>

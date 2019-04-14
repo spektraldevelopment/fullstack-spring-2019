@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit, faTrashAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit, faTrashAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 //import logo from './logo.svg';
 
 //Global Components
@@ -14,6 +14,7 @@ import EditView from './views/edit-view/edit-view';
 import ItemView from './views/item-view/item-view';
 
 //Import font awesome icons
+library.add(faPlus);
 library.add(faEdit);
 library.add(faTrashAlt);
 library.add(faSearch);
