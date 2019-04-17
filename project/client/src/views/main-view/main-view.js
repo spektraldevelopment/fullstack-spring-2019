@@ -28,7 +28,8 @@ class MainView extends Component {
     }
 
     onEditClick = (evt) => {
-        console.log("Edit item clicked: ", evt.target);
+        const id = evt.currentTarget.dataset.itemId;
+        console.log("Edit item clicked: ", id);
     }
 
     onDeleteClick = (evt) => {
@@ -43,7 +44,6 @@ class MainView extends Component {
                 // handle error
                 console.error(error);
             })
-
 
         console.log("Delete item clicked: ", id);
     }
@@ -107,9 +107,10 @@ class MainView extends Component {
                                 this.state.items.map((item, i) => {
                                     return (
                                         <ListGroup.Item as="li" key={item._id} >
-                                            <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/>
+                                            {/* <img src="https://via.placeholder.com/100?text=Image+Of+Item" alt="item"/> */}
                                             <h4>{item.name}</h4>
                                             <h5>{item.manufacturer}</h5>
+                                            <p>{item.cost}</p>
                                             
                                             <div className="float-right mx-2">
                                                 <Button variant="danger" data-item-id={item._id} onClick={this.onDeleteClick}>
@@ -118,9 +119,11 @@ class MainView extends Component {
                                             </div>
 
                                             <div className="float-right mx-2" >
-                                                <Button variant="dark" data-item-id={item._id} onClick={this.onEditClick}>
-                                                    <FontAwesomeIcon icon="edit" />
-                                                </Button>
+                                                <Link to={`/edit/${item._id}`}>
+                                                    <Button variant="dark" data-item-id={item._id} onClick={this.onEditClick}>
+                                                        <FontAwesomeIcon icon="edit" />
+                                                    </Button>
+                                                </Link>
                                             </div>    
                                             
                                         </ListGroup.Item>

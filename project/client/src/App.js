@@ -26,7 +26,7 @@ class App extends Component {
         <Header />
         <Route exact path="/" component={MainView}/>
         <Route exact path="/add" component={AddView}/>
-        <Route exact path="/edit" component={EditView}/>
+        <Route exact path="/edit/:id" component={EditView}/>
         <Route exact path="/item/:id" component={ItemView}/>
       </>
     );
