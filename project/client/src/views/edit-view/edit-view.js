@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 import axios from 'axios';
@@ -63,7 +63,7 @@ class EditView extends Component {
             "serialImageUrl": "http://via.placeholder.com/360x640",
             "thumbnailUrl": "http://via.placeholder.com/100x100"
         })
-        .then((response) => {
+        .then((res) => {
             this.setState({
                 redirectToMain: true
             });
@@ -138,6 +138,14 @@ class EditView extends Component {
                                 <Button variant="primary" type="submit" onClick={this.onEditSubmitItem}>
                                     Submit
                                 </Button>
+
+
+                                <Link to={`/`}>
+                                    <Button variant="danger" type="submit">
+                                        Cancel
+                                    </Button>
+                                </Link>
+
                             </Form>
                         </Col>
                     </Row>
