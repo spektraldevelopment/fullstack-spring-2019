@@ -20,7 +20,7 @@ const { router: itemsRoutes } = require('./routes/items/itemsRoutes');
 const { router: itemRoutes } = require('./routes/item/itemRoutes');
 
 // 5. Require conatants
-const { PORT } = require('./utils/constants');
+const { PORT, URL } = require('./utils/constants');
 
 // 6. Apply general middleware
 applyMiddleware(middleWare, router);
@@ -44,11 +44,11 @@ server.listen(PORT, () => {
   }
 });
 
-const url = 'mongodb://localhost:27017/coverage';
+console.log();
 
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(URL, { useNewUrlParser: true })
   .then(async () => {
-    console.log(`CONNECTED to server: ${url}`);
+    console.log(`CONNECTED to server: ${URL}`);
 
     // // const myFriend = new Users({
     // //   firstName: 'Reese',
